@@ -1,0 +1,114 @@
+.color-button {
+  position: relative;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 16px;
+  background: var(--button-bg);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px var(--button-shadow);
+  min-width: 140px;
+}
+
+.color-button:hover:not(:disabled) {
+  background: var(--button-hover-bg);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--button-shadow);
+}
+
+.color-button:active:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.color-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.color-button.active {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3),
+              0 4px 20px var(--button-shadow);
+  animation: pulse 2s infinite;
+}
+
+.color-button-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.color-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.color-button:hover:not(:disabled) .color-circle {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+.color-button.active .color-circle {
+  background: rgba(255, 255, 255, 0.5);
+  animation: glow 2s infinite;
+}
+
+.color-label {
+  font-size: 1.1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.active-indicator {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: white;
+  color: var(--button-bg);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: bounce 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3),
+                0 4px 20px var(--button-shadow);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.2),
+                0 4px 30px var(--button-shadow);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
