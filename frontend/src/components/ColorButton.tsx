@@ -16,21 +16,15 @@ interface ColorButtonProps {
 const COLOR_CONFIG = {
   red: {
     label: 'Red',
-    bg: '#ef4444',
-    hoverBg: '#dc2626',
-    shadow: 'rgba(239, 68, 68, 0.5)',
+    color: '#ef4444',
   },
   green: {
     label: 'Green',
-    bg: '#22c55e',
-    hoverBg: '#16a34a',
-    shadow: 'rgba(34, 197, 94, 0.5)',
+    color: '#22c55e',
   },
   yellow: {
     label: 'Yellow',
-    bg: '#eab308',
-    hoverBg: '#ca8a04',
-    shadow: 'rgba(234, 179, 8, 0.5)',
+    color: '#fbbf24',
   },
 };
 
@@ -43,9 +37,7 @@ export function ColorButton({ color, isActive, onClick, disabled }: ColorButtonP
       onClick={onClick}
       disabled={disabled}
       style={{
-        '--button-bg': config.bg,
-        '--button-hover-bg': config.hoverBg,
-        '--button-shadow': config.shadow,
+        '--button-color': config.color,
       } as React.CSSProperties}
       aria-label={`Set light to ${config.label}`}
     >
@@ -53,7 +45,6 @@ export function ColorButton({ color, isActive, onClick, disabled }: ColorButtonP
         <div className="color-circle"></div>
         <span className="color-label">{config.label}</span>
       </div>
-      {isActive && <div className="active-indicator">●</div>}
     </button>
   );
 }

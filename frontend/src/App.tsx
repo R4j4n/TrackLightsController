@@ -114,18 +114,14 @@ function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-content">
-          <h1 className="app-title">
-            <span className="title-icon">💡</span>
-            Track Lights Controller
-          </h1>
-          <p className="app-subtitle">Control your track lights with style</p>
+          <h1 className="app-title">Track Lights Controller</h1>
+          <p className="app-subtitle">Control your track lights with precision</p>
         </div>
       </header>
 
       <main className="app-main">
         {error && (
           <div className="error-banner">
-            <span className="error-icon">⚠️</span>
             {error}
             <button className="error-dismiss" onClick={() => setError(null)}>×</button>
           </div>
@@ -182,7 +178,6 @@ function App() {
               onClick={handleReset}
               disabled={isProcessing || !isConnected}
             >
-              <span className="reset-icon">🔄</span>
               Reset System
             </button>
           </section>
@@ -193,9 +188,9 @@ function App() {
         <p>Built with React + TypeScript + Vite</p>
         <p className="footer-status">
           {isConnected ? (
-            <span className="status-connected">● Connected</span>
+            <span className="status-connected">Connected</span>
           ) : (
-            <span className="status-disconnected">● Disconnected</span>
+            <span className="status-disconnected">Disconnected</span>
           )}
         </p>
       </footer>

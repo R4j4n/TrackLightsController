@@ -13,7 +13,6 @@ from contextlib import asynccontextmanager
 
 from gpio_controller import GPIOController, LightMode, LightColor
 
-
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -50,20 +49,17 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Configure CORS
+# Configure CORS - Allow all origins for easy development
+# Simply change the IP in frontend/.env and it will work
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",  # Vite dev server
-        "http://127.0.0.1:5173",
-        "http://192.168.1.99:5173",  # Network access
-        "http://localhost:3000",  # Alternative ports
-        "http://127.0.0.1:3000",
-    ],
+    allow_origins=["*"],  # Allow all origins
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+logger.info("CORS configured to allow all origins")
 
 
 # Request/Response Models

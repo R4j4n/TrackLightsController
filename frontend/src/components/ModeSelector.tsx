@@ -17,37 +17,37 @@ const MODES: ModeInfo[] = [
     name: 'breathe_colors',
     press_count: 1,
     description: 'Breathe Colors',
-    icon: '🌈',
+    icon: '',
   },
   {
     name: 'color_duration',
     press_count: 2,
     description: 'Color Duration',
-    icon: '⏱️',
+    icon: '',
   },
   {
     name: 'track_direction',
     press_count: 3,
     description: 'Track Direction',
-    icon: '➡️',
+    icon: '',
   },
   {
     name: 'circular_pattern',
     press_count: 4,
     description: 'Circular Pattern',
-    icon: '🔄',
+    icon: '',
   },
   {
     name: 'white_mode',
     press_count: 5,
     description: 'White Mode',
-    icon: '💡',
+    icon: '',
   },
   {
     name: 'off',
     press_count: 6,
     description: 'Turn Off',
-    icon: '⚫',
+    icon: '',
   },
 ];
 
@@ -64,14 +64,10 @@ export function ModeSelector({ currentMode, onModeSelect, disabled }: ModeSelect
             disabled={disabled}
             aria-label={`Set mode to ${mode.description}`}
           >
-            <div className="mode-icon">{mode.icon}</div>
             <div className="mode-info">
               <div className="mode-name">{mode.description}</div>
               <div className="mode-press-count">{mode.press_count} press{mode.press_count !== 1 ? 'es' : ''}</div>
             </div>
-            {currentMode === mode.name && (
-              <div className="mode-active-badge">Active</div>
-            )}
           </button>
         ))}
       </div>

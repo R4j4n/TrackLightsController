@@ -31,15 +31,9 @@ export function StatusDisplay({ status, isConnected, isLoading }: StatusDisplayP
   const getColorDisplay = (color: string | null) => {
     if (!color) return null;
 
-    const colorEmojis: Record<string, string> = {
-      red: '🔴',
-      green: '🟢',
-      yellow: '🟡',
-    };
-
     return {
-      emoji: colorEmojis[color] || '⚪',
       name: color.charAt(0).toUpperCase() + color.slice(1),
+      color: color,
     };
   };
 
@@ -55,7 +49,6 @@ export function StatusDisplay({ status, isConnected, isLoading }: StatusDisplayP
   if (!isConnected || !status) {
     return (
       <div className="status-display disconnected">
-        <div className="status-icon">⚠️</div>
         <h3>Disconnected</h3>
         <p>Unable to connect to controller</p>
       </div>
@@ -86,15 +79,15 @@ export function StatusDisplay({ status, isConnected, isLoading }: StatusDisplayP
 
         <div className="status-item">
           <div className="status-label">Last Color</div>
-          <div className="status-value color-value">
-            {colorDisplay ? (
-              <>
-                <span className="color-emoji">{colorDisplay.emoji}</span>
-                {colorDisplay.name}
-              </>
-            ) : (
-              <span className="no-color">No color selected</span>
-            )}
+          <div
+            className="status-value color-value"
+            style={colorDisplay ? {
+              '--color-dot': colorDisplay.color === 'red' ? 'var(--color-red)' :
+                            colorDisplay.color === 'green' ? 'var(--color-green)' :
+                            colorDisplay.color === 'yellow' ? 'var(--color-yellow)' : 'transparent'
+            } as React.CSSProperties : undefined}
+          >
+            {colorDisplay ? colorDisplay.name : <span className="no-color">No color selected</span>}
           </div>
         </div>
 
