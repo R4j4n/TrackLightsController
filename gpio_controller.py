@@ -198,12 +198,16 @@ class GPIOController:
         current_count = self.current_mode_press_count
 
         # Calculate how many presses needed (cycles through 1-6)
-        if target_count == current_count:
+        # Special case: current_count = 0 means no mode is set yet (initial/reset state)
+        if current_count == 0:
+            # From initial state, just press target_count times
+            presses_needed = target_count
+        elif target_count == current_count:
             presses_needed = 0
         elif target_count > current_count:
             presses_needed = target_count - current_count
         else:
-            # Need to cycle around (e.g., from 5 to 2 = 3 presses)
+            # Need to cycle around (e.g., from 5 to 2 = 3 presses: 5->6->1->2)
             presses_needed = (6 - current_count) + target_count
 
         self.logger.info(f"Setting mode to {target_mode.value}: need {presses_needed} presses")

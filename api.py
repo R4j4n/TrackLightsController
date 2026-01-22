@@ -124,6 +124,7 @@ async def set_color(request: ColorRequest):
     Returns:
         Action confirmation with details
     """
+    print("color changedddd....")
     if not controller:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
