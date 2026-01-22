@@ -133,6 +133,10 @@ class GPIOController:
         self._simulate_button_press(pin)
         self.last_color_pressed = color
 
+        # Pressing a color button resets the mode cycle on the hardware
+        # Reset mode press count so next mode selection calculates correctly
+        self.current_mode_press_count = 0
+
         # Save state after color change
         self.state_manager.save_state(
             self.current_mode_press_count,
